@@ -11,7 +11,7 @@ export default function Footer() {
         />
         <p>@ 2022 Coded by Tetiana Hil</p>
         <a
-          href="https://github.com/TetiDev/weatherWidget"
+          href="https://github.com/TetiDev/WA_React"
           target="_blank"
           rel="noreferrer"
         >
