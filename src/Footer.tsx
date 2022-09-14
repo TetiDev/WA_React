@@ -5,7 +5,7 @@ export default function Footer() {
     <div>
       <footer className="footer">
         <img
-          src="https://img.kidico.com.ua/shecode/girl.png"
+          src="public/img/logo.png"
           width="30"
           alt="img"
         />
