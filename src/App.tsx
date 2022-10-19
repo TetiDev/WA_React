@@ -12,9 +12,22 @@ import { AxiosDayType } from './AxiocDayType';
 import { AxiosWeekType } from './AxiosWeekType';
 
 function App() {
-  const [city, setCity] = useState(HelperData.cities[0]);
+  const [city, setCity] = useState('');
   const [dataDay, setDataDay] = useState<AxiosDayType>();
   const [dataWeek, setDataWeek] = useState<AxiosWeekType>();
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const curLatitude = position.coords.latitude;
+      const curLongitude = position.coords.longitude;
+
+      const urlCurCity = `https://api.openweathermap.org/data/2.5/weather?lat=${curLatitude}&lon=${curLongitude}&appid=${HelperData.apiKey}&units=metric`;
+      (async () => {
+        const responseCurCity = await axios.get(urlCurCity);
+        setCity(responseCurCity.data.name);
+      })();
+    });
+  }, []);
 
   useEffect(() => {
     (
