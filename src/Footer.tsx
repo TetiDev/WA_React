@@ -9,7 +9,7 @@ export default function Footer() {
           width="30"
           alt="img"
         />
-        <p>@ 2022 Coded by Tetiana Hil</p>
+        <p>@ 2023 Coded by Tetiana Hil</p>
         <a
           href="https://github.com/TetiDev/WA_React"
           target="_blank"
