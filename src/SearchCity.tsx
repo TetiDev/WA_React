@@ -16,7 +16,7 @@ export const SearchCity: React.FC = () => {
          <div style={{ width: '90%' }}>
            <input type="search" ref={refInput} placeholder="Search..." className="name_city_search" />
          </div>
-         <div style={{ width: '10%' }}>
+         <div>
            <input type="submit" value="Ok" className="btn_submit"/>
          </div>
       </form>

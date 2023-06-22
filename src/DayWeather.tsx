@@ -11,7 +11,6 @@ type DayWeatherProps = {
 export const DayWeather: React.FC<DayWeatherProps> = (props) => {
   // const imgName = props.data.weather![0].description.replace(' ', '_');
   const iconName = HelperData.iconWeather[props.data.weather![0].icon];
-  console.log(iconName);
   return (
     <div>
       <div className="day_weather">

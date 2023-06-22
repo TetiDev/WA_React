@@ -1,3 +1,5 @@
+import exp from 'constants';
+
 export type AxiosDayType = {
   coord?: CoordType,
   main?: MainType,

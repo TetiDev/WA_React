@@ -28,7 +28,6 @@ header {
   background-color: white;
   border-radius: 20px;
   box-shadow: var(--box-shadow);
-
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -58,6 +57,7 @@ header {
   display: flex;
   align-items: baseline;
 }
+
 .search_city .name_city_search {
   background-color: #efefef;
   padding: 7px 18px;
