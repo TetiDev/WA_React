@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
-import { Context } from './context';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { HelperData } from './helperData';
 import { SearchCity } from './SearchCity';
 import { Capitalize } from './capitalize';
-import { ContextDataType } from './ContextDataType';
+import { AppDispatch } from './store';
+import { setCurrentCity } from './store/slices/appSlice';
 
 export const Header: React.FC = () => {
-  const context = useContext<ContextDataType | null>(Context);
+  const dispatch = useDispatch<AppDispatch>();
+  // const currentCity = useSelector<RootState, string>((state) => state.app.currentCity);
+  // const dataForecast = useSelector<RootState, string>((state) => state.app.dataForecast);
 
   const changeCity = (event: React.MouseEvent<HTMLSpanElement>) => {
-    context!.setCity(Capitalize(event.currentTarget.id));
+    dispatch(setCurrentCity(Capitalize(event.currentTarget.id)));
   };
 
   return (

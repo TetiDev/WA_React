@@ -8,6 +8,7 @@ export class HelperData {
   static readonly weekShort = ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
   static readonly apiKey = '6f035692382f13a1602ebdd889cd43a6';
+  // static readonly apiKey = '2d4e7c70530458cd72e77d4f65c15a6d';
 
   static readonly weekPattern = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -15,7 +16,7 @@ export class HelperData {
 
   static readonly monthPatternSmall = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-  static readonly cities = ['Warszawa', 'Paris', 'New York', 'London'];
+  static readonly cities = ['New York', 'Paris', 'London', 'Warszawa'];
 
   static readonly iconWeather:{ [key: string]: any } = {
     '01d': 'clear_sky',

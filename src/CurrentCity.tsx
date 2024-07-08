@@ -1,17 +1,20 @@
 import React, {
-  useCallback, useContext, useState,
+  useCallback, useState,
 } from 'react';
-import { Context } from './context';
-import { Capitalize } from './capitalize';
+import { useSelector } from 'react-redux';
 import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
+import { RootState } from './store';
+import { DataForecastType } from './types';
+import { Capitalize } from './capitalize';
 
-export default function CurrentCity() {
-  const context = useContext(Context);
+export const CurrentCity: React.FC = () => {
+  const currentCity = useSelector<RootState, string>((state) => state.app.currentCity);
+  const dataForecast = useSelector<RootState, DataForecastType>((state) => state.app.dataForecast);
+  const { current } = dataForecast;
   const [switchTemp, setSwitchTemp] = useState<'cel' | 'far'>('cel');
 
-  // console.log(context!.dataDay);
-  const imgName = context!.dataDay ? context!.dataDay.weather![0].description.replace(' ', '_') : '';
-  const date = new Date(context!.dataDay?.dt! * 1000);
+  const imgName = current && current.weather[0] ? current.weather[0].description.replace(' ', '_') : '';
+  const date = new Date(dataForecast.current?.dt! * 1000);
   const options: DateTimeFormatOptions = { weekday: 'short', day: 'numeric', month: 'short' };
   const curDate = date.toLocaleDateString('en-US', options);
 
@@ -24,32 +27,30 @@ export default function CurrentCity() {
   }, [switchTemp]);
 
   const getTemperature = useCallback(() => {
-    if (!context!.dataDay) {
+    if (!dataForecast.current) {
       return '';
     }
 
-    const temp = switchTemp === 'cel' ? context!.dataDay!.main!.temp : (context!.dataDay!.main!.temp * 9) / 5 + 32;
-    return context!.dataDay ? Math.round(temp) : 0;
-  }, [context, switchTemp]);
+    const temp = switchTemp === 'cel' ? dataForecast.current.temp : (dataForecast.current.temp * 9) / 5 + 32;
+    return dataForecast.current ? Math.round(temp) : 0;
+  }, [currentCity, switchTemp]);
 
   return (
         <div>
             <div className="current_city">
                 <div className="current_city_header">
                     <img className="ico_pict_day" src="img/pin.png" alt="" width={30}/>
-                    <span className="caption_current_city">{context!.city}</span>
+                    <span className="caption_current_city">{currentCity}</span>
                 </div>
                 <div className="block_weather block_weather__color">
                     <div className="weather_city">
                         <div style={{ width: '60%' }}>
                             <img className="pict_day"
                                  src={`img/${imgName}.png`}
-                                // src="https://img.kidico.com.ua/shecode/sunny.png"
-                                // {`img/${context.data.weather[0].description}.png`}
                                  height="140"
                                  alt="type"
                             />
-                            <p className="type_weather">{context!.dataDay ? Capitalize(context!.dataDay.weather![0].description) : ''}</p>
+                             <p className="type_weather">{current && current.weather[0] ? Capitalize(current.weather[0].description) : ''}</p>
                             <p className="cur_date">{curDate}</p>
                         </div>
                         <div style={{ width: '40%', position: 'relative' }}>
@@ -72,9 +73,7 @@ export default function CurrentCity() {
                                 </div>
                                 <div style={{ marginLeft: '20px' }}>
                                     <p>Wind</p>
-                                    <span
-                                        className="speed_wind">{context!.dataDay ? Math.round(context!.dataDay.wind!.speed) : 0}</span>
-                                    <span> km/h</span>
+                                    <span className="speed_wind">{`${dataForecast.current ? Math.round(dataForecast.current.wind_speed) : 0} km/h`}</span>
                                 </div>
                             </div>
                         </div>
@@ -83,4 +82,4 @@ export default function CurrentCity() {
             </div>
         </div>
   );
-}
+};
