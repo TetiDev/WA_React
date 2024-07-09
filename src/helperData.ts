@@ -20,7 +20,9 @@ export class HelperData {
 
   static readonly iconWeather:{ [key: string]: any } = {
     '01d': 'clear_sky',
+    '01n': 'clear_sky',
     '02d': 'few_clouds',
+    '02n': 'few_clouds',
     '03d': 'scattered_clouds',
     '04d': 'broken_clouds',
     '09d': 'shower_rain',
