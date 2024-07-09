@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,6 +45,7 @@ function App() {
         const { lat, lon } = responseNewCity.data[0];
         const urlLatLon = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${HelperData.apiKey}&units=metric`;
         const responseWeek = await axios.get(urlLatLon);
+        console.log(responseWeek.data);
         dispatch(setDataForecast(responseWeek.data));
       }
     )();
