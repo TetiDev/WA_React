@@ -42,7 +42,7 @@ export const CurrentCity: React.FC = () => {
             <div className="current_city">
                 <div className="current_city_header">
                     <img className="ico_pict_day" src="img/pin.png" alt="" width={30}/>
-                    <span className="caption_current_city">{currentCity}</span>
+                    <span className="caption_current_city">{capitalize(currentCity)}</span>
                 </div>
                 <div className="block_weather block_weather__color">
                     <div className="weather_city">
