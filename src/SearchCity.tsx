@@ -1,14 +1,17 @@
-import React, { useContext, useRef } from 'react';
-import { Context } from './context';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { AppDispatch } from './store';
+import { setCurrentCity } from './store/slices/appSlice';
 
 export const SearchCity: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const refInput = useRef<HTMLInputElement>(null);
-  const context = useContext(Context);
 
-  function searchCity(event:React.MouseEvent<HTMLFormElement>) {
+  const searchCity = (event:React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
-    context!.setCity(refInput.current!.value);
-  }
+    dispatch(setCurrentCity(refInput.current!.value));
+  };
 
   return (
     <div>
