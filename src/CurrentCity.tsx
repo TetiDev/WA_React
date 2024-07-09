@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
 import { RootState } from './store';
 import { DataForecastType } from './types';
-import { Capitalize } from './capitalize';
+import { capitalize } from './capitalize';
+import { HelperData } from './helperData';
 
 export const CurrentCity: React.FC = () => {
   const currentCity = useSelector<RootState, string>((state) => state.app.currentCity);
@@ -13,7 +14,8 @@ export const CurrentCity: React.FC = () => {
   const { current } = dataForecast;
   const [switchTemp, setSwitchTemp] = useState<'cel' | 'far'>('cel');
 
-  const imgName = current && current.weather[0] ? current.weather[0].description.replace(' ', '_') : '';
+  // const imgName = current && current.weather[0] ? current.weather[0].description.replace(' ', '_') : '';
+  const imgName = current && current.weather[0] ? HelperData.iconWeather[current.weather![0].icon] : '';
   const date = new Date(dataForecast.current?.dt! * 1000);
   const options: DateTimeFormatOptions = { weekday: 'short', day: 'numeric', month: 'short' };
   const curDate = date.toLocaleDateString('en-US', options);
@@ -50,7 +52,7 @@ export const CurrentCity: React.FC = () => {
                                  height="140"
                                  alt="type"
                             />
-                             <p className="type_weather">{current && current.weather[0] ? Capitalize(current.weather[0].description) : ''}</p>
+                             <p className="type_weather">{current && current.weather[0] ? capitalize(current.weather[0].description) : ''}</p>
                             <p className="cur_date">{curDate}</p>
                         </div>
                         <div style={{ width: '40%', position: 'relative' }}>

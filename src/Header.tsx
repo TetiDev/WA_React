@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { HelperData } from './helperData';
 import { SearchCity } from './SearchCity';
-import { Capitalize } from './capitalize';
+import { capitalize } from './capitalize';
 import { AppDispatch } from './store';
 import { setCurrentCity } from './store/slices/appSlice';
 
@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
   // const dataForecast = useSelector<RootState, string>((state) => state.app.dataForecast);
 
   const changeCity = (event: React.MouseEvent<HTMLSpanElement>) => {
-    dispatch(setCurrentCity(Capitalize(event.currentTarget.id)));
+    dispatch(setCurrentCity(capitalize(event.currentTarget.id)));
   };
 
   return (

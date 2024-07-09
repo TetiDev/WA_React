@@ -1,7 +1,7 @@
 import React from 'react';
 import { DateTime } from 'luxon';
-import { DailyType } from './AxiosWeekType';
 import { HelperData } from './helperData';
+import { DailyType } from './types';
 
 type DayWeatherProps = {
   data: DailyType,
