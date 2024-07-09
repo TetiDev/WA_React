@@ -24,11 +24,18 @@ export class HelperData {
     '02d': 'few_clouds',
     '02n': 'few_clouds',
     '03d': 'scattered_clouds',
+    '03n': 'scattered_clouds',
     '04d': 'broken_clouds',
+    '04n': 'broken_clouds',
     '09d': 'shower_rain',
+    '09n': 'shower_rain',
     '10d': 'rain',
+    '10n': 'rain',
     '11d': 'thunderstorm',
+    '11n': 'thunderstorm',
     '13d': 'snow',
+    '13n': 'snow',
     '50d': 'mist',
+    '50n': 'mist',
   }
 }
